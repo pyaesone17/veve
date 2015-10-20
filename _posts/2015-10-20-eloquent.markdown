@@ -1,0 +1,16 @@
+---
+layout: post
+title:  "Eloquent handy!"
+date:   2015-10-20 18:08:34
+categories: Tutorial
+---
+In this tutorial I will talk about Eloquent tricks that everyone should know.
+
+
+<pre>
+<code>
+	$data=$user->posts;
+	is work as
+	$data=$user->posts()->get();
+</code>
+</pre>
