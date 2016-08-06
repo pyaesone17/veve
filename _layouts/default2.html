@@ -2,7 +2,7 @@
 <html>
 
   {% include bloghead.html %}
-
+    <!-- jQuery Version 1.11.0 -->
   <body>
 
     <!-- Header -->
@@ -12,7 +12,7 @@
             <h1 class="tlt" data-in-effect="fadeIn">{{ site.title }}</h1>
             <h3 class="second" data-in-effect="fadeIn">#Be Inspiration</h3>
             <br>
-            <a href="/" class="btn btn-dark btn-lg" id="find">Home</a>
+            <a href="/veve/" class="btn btn-dark btn-lg" id="find">Home</a>
         </div>
     </header>
 
@@ -20,20 +20,27 @@
     <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
     <section id="services" class="services" style="background:white">
         <div class="container">
-            <div class="row text-center">
-                <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-9">
                     <div class="row">
-                        <div class="col-lg-12 text-center">
-                            <h2 class="col-lg-12 wow zoomIn"  data-wow-delay="0.3s">My Blog about Laravel , PHP , Vue and Others ...</h2>
+                        <div class="col-lg-12">
+                            <h2 class="wow zoomIn"  data-wow-delay="0.3s" style="font-size: 38px">My Blog about Laravel , PHP , Vue and Others ...</h2>
                         </div>
                     </div>
-                    <hr class="small">
+                    <hr >
                   <div class="page-content">
                     <div class="wrapper">
-                      {{ content }} 
+                        {{ content }} 
                     </div>
                   </div>
                     <!-- /.row (nested) -->
+                </div>
+                <div class="col-lg-3" style="padding-left: 20px">
+                    <h2>You may also read </h2>
+                    <div class="col-lg-12">{% for post in site.posts %}    
+                        <h4><a href="{{ post.url }}">{{ post.title }}</a></h4>
+                        <p><small><strong>{{ post.date | date: "%B %e, %Y" }}</strong> . {{ post.category }} . <a href="http://erjjones.github.com{{ post.url }}#disqus_thread"></a></small></p>            
+                    {% endfor %}</div>
                 </div>
                 <!-- /.col-lg-10 -->
             </div>
@@ -76,25 +83,24 @@
         </div>
     </footer>
 
-    <!-- jQuery Version 1.11.0 -->
-    <script src="/js/jquery-1.11.0.js"></script>
+    <script src="{{ "/js/jquery-1.11.0.js" | prepend: site.baseurl }}"></script> 
 
     <!-- Bootstrap Core JavaScript -->
-    <script src="/js/bootstrap.min.js"></script>
+    <script src="{{ "/js/bootstrap.min.js"  | prepend: site.baseurl }}"></script>
 
-    <script src="/js/textile/assets/jquery.lettering.js"></script>
+    <script src="{{ "/js/textile/assets/jquery.lettering.js" | prepend: site.baseurl }}"></script>
 
-    <script src="/js/textile/assets/jquery.fittext.js"></script>
+    <script src="{{ "/js/textile/assets/jquery.fittext.js" | prepend: site.baseurl }}"></script>
 
-    <script src="/js/textile/jquery.textillate.js"></script>
+    <script src="{{ "/js/textile/jquery.textillate.js" | prepend: site.baseurl }}"></script>
 
-    <script src="/js/mixitup/mixitup.js"></script>
+    <script src="{{ "/js/mixitup/mixitup.js" | prepend: site.baseurl }}"></script>
 
-    <script src="/js/wow/wow.min.js"></script>
+    <script src="{{ "/js/wow/wow.min.js" | prepend: site.baseurl }}"></script>
 
     <!-- Custom Theme JavaScript -->
     <script>
-
+    $('document').ready(function(){
 
     $(function () {
         
@@ -148,7 +154,8 @@
                 }
             }
         });
-    });
+    });        
+    })
     </script>
 
   </body>

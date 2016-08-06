@@ -1,130 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Pyae Sone Nyein</title>
+    <title>Nyan Win</title>
     <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 </description>
     <link>http://pyaesone17.github.io/veve/veve/</link>
     <atom:link href="http://pyaesone17.github.io/veve/veve/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 25 Dec 2015 01:19:31 +0630</pubDate>
-    <lastBuildDate>Fri, 25 Dec 2015 01:19:31 +0630</lastBuildDate>
-    <generator>Jekyll v2.5.3</generator>
+    <pubDate>Sat, 06 Aug 2016 13:39:50 +0630</pubDate>
+    <lastBuildDate>Sat, 06 Aug 2016 13:39:50 +0630</lastBuildDate>
+    <generator>Jekyll v3.1.6</generator>
     
       <item>
-        <title>Eloquent handy!</title>
-        <description>&lt;p&gt;In this tutorial I will talk about Eloquent tricks that everyone should know.&lt;/p&gt;
+        <title>Laravel Migration Part I!</title>
+        <description>&lt;p&gt;In this tutorial I will talk about Database Migration, How it is realated to version Control and Many More.&lt;/p&gt;
 
-&lt;pre&gt;
-&lt;code&gt;
-	$data=$user-&amp;gt;posts;
-	is work as
-	$data=$user-&amp;gt;posts()-&amp;gt;get();
-&lt;/code&gt;
-&lt;/pre&gt;
+&lt;h2 id=&quot;introduction&quot;&gt;1.INTRODUCTION&lt;/h2&gt;
 
-&lt;p&gt;Collection Where and Query Builder Where&lt;/p&gt;
+&lt;p&gt;Laravel ကို စေလ့လာတာနဲ့ ပံုမွန္အားျဖင့္ က်ေနာ္တို့က Request, Response, Controller, Route ျပီးရင္ Eloquent ကို အေလးေပးျပီးျကည့္က်တာ မ်ားပါတယ္၊ ပံုမွန္အားျဖင့္လည္း အဲ့အပုိင္းေတြက Application တည္ေဆာက္ရာမွာ အဓိက က်တဲ့ အပုိင္းေတြျဖစ္တာေျကာင့္လည္းပါ ပါတယ္၊&lt;/p&gt;
 
-&lt;pre&gt;
-&lt;code&gt;
+&lt;p&gt;ဒီ Migration ကို က်ေနာ္ေရးဖို့လဲ စိတ္ကူးမရိွခဲ့ပါဘူး၊ သုိ့ေသာ္ အခုေနာက္ပိုင္း က်ေနာ္ေတြ့ဆံု ခဲ့ရတဲ့ Developer အခ်ို့က  &lt;strong&gt;PHP My Admin နဲ့ဆို UI ပါရတယ္၊ ျပင္လိုက္ရင္လြယ္တာေပါ့. Migration ကို ဘာလို့သံုးတာလဲ&lt;/strong&gt;၊ လို့ေမးလာတဲ့အတြက္ က်ေနာ္သိသေလာက္ ေရးျပီးေ၀မွ်လိုက္ပါတယ္ ၊&lt;/p&gt;
 
-	$data=$user-&amp;gt;posts-&amp;gt;where('visited_count',2);
-	ဒါက collection object မွာ where သံုးထားတာပါ. သည္ where method ဒီ 
-	query builder where method မဟုတ္ေျကာင္းသတိျပုဖို့လိုပ္တယ္. 
-	collection object မွာ သံုးလို့ရတဲ့ collection where method တစ္ုချဖစ္ပါတယ္
+&lt;p&gt;က်ေနာ့္ အျမင္အရေတာ့့PHP My Admin သည္ အလြန္ေကာင္းမြန္တဲ့ Software ပါ ၊ သို့ေသာ္ က်ေနာ္တို့က “&lt;strong&gt;Chose the right tool for the right place&lt;/strong&gt;” ဆိုတဲ့ စကားနဲ့ အညီ ဆံုးျဖတ္ရမွာျဖစ္ပါတယ္၊ ဘာအေျကာင္းေျကာင့္ Migration သံုးရတာလဲ ဘယ္ေနရာမွာ Migration ကို သံုးသင့္သလဲ၊ Migration သံုးရျခင္းေျကာင္းျဖစ္ေပါလာမဲ့ ေကာင္းက်ိုးဆိုးက်ိုးေတြကို ရွင္းျပသြားမွာပါ၊&lt;/p&gt;
 
-	$data=$user-&amp;gt;posts()-&amp;gt;where('visited_count',2)-&amp;gt;get();
+&lt;h2 id=&quot;problem&quot;&gt;2.PROBLEM&lt;/h2&gt;
 
-	ဒါကေတာ့ query builder ရဲ့ where method ကိုသံုးျပီး database ထဲက visited_count '2' နဲ့ ညီတာကို ဆြဲထုတ္ျပသြားတာပါ
-    
+&lt;p&gt;က်ေနာ္တို့ Team နဲ့အလုပ္လုပ္ ရျပီဆိုရင္ အသင္းရဲ့ member ၀င္တစ္ေယာက္ေယာက္ရဲ့ ေျပာင္းလဲလိုက္သည့္ Database Schema ကို အျမဲ မျပတ္ သိဖို့လိုအပ္လာပါတယ္၊ ဒါမွသာ Develop လုပ္ေနတဲ့ App က Error ကင္းကင္းနဲ့ အလုပ္လုပ္နိုင္မွာပါ၊&lt;/p&gt;
 
-&lt;/code&gt;
-&lt;/pre&gt;
+&lt;p&gt;က်ေနာ္တို့ ေတာ္ေတာ္မ်ားမ်ားျကံုဖူးမွာပါ၊    “ဟာ အခုေလးတင္ Code က အလုပ္လုပ္ေနေသးတယ္၊ Git Pull လုပ္ျပီးမွ Code ေတြ အလုပ္မလုပ္ေတာ့ဘူး . Error Log မွာေတာ့ Database Column မရိွလို့ျဖစ္တယ္ျပေနတယ္ , ဘယ္သူ Database Update လုပ္ေသးလဲ“   ဒီစကားေလးက Developer ေတာ္ေတာ္မ်ားမ်ား ျငီးသြားဖူးမွာပါ ၊&lt;/p&gt;
 
-&lt;p&gt;Different Between collection Where method and Query Builder Where&lt;/p&gt;
+&lt;p&gt;ျငီးတြားျပီးရင္ေတာ့ PHP My Admin ကိုဖြင့္ ၊ Column ေတြကို manual နဲ့ create လုပ္ရအံုးမွာ၊ Geek ဆိုရင္ေတာ့ terminal ထဲသြားျပီး Alter table blah blah ေတြရိုက္ရမွာေပ့ါ၊ Database  changes သိပ္မရိွဘဲ   develop လုပ္ရတဲ့ APP မ်ိုး၊ ဒါမွမဟုတ္ Table Structure အားလံုးကို တစ္ခါတည္း Analysis ေလ့ရိွတဲ့ SSADM methodology မ်ိုးဆိုရင္ေတာ့ ပံုမွန္ Traditional နည္းလမ္း နဲ့ အဆင္ေျပေနမွာပါ၊&lt;/p&gt;
 
-&lt;pre&gt;
-&lt;code&gt;
+&lt;h2 id=&quot;agile-and-migration&quot;&gt;3.AGILE AND MIGRATION&lt;/h2&gt;
 
-#Diff1 fetching
+&lt;p&gt;Aglie လို methodology က Iterative Devlopment ျဖစ္တဲ့ အတြက္ Code ေတြ Database ေတြဟာ အခ်ိန္နဲ့ အမွ်အျမဲတမ္းေျပာင္းလဲေနမွာပါ၊ ေျပာင္းလဲေနတဲ့ Code ေတြနဲ့ အညီေျပာင္းလဲသြားတဲ့ Database structure ကို version control လုပ္ျပီး မွတ္သားထားဖုိ့လိုပါတယ္၊&lt;/p&gt;
 
-	$data=$user-&amp;gt;posts-&amp;gt;where('visited_count',2);
+&lt;p&gt;Code ေတြအတြက္ Version Control ကို Git Hub မွအလြယ္တကူ မွတ္သားနိုင္ေပမယ့္ ၊ ေျပာင္းလဲသြားတဲ့ Database Structure ကို sql File ျဖစ္ Export လုပ္ျပီး Git နဲ့ တင္ဖို့က်ေတ့ာ အဆင္မေျပပါဘူး၊&lt;/p&gt;
 
-	collection object ျဖစ္တဲ့အတြက္ တစ္ခါထဲ condition စစ္ျပီး ဆြဲထုတ္လုိ့ရပါတယ္
+&lt;p&gt;ဒီေနရာမွာ Database Structure ကို Version Control လုပ္ေပးနိုင္တဲ့ Migration Tool ေတြကို အသံုးျပုဖို့လိုအပ္လာခဲ့ပါတယ္၊ Agile ေခတ္စားလာတာနဲ့ အညီ Migration Tool ေတြဟာ အခုေနာက္ပိုင္း Modern Framework ေတြမွာ Out of The Box Feature အျဖစ္ပါ၀င္လာခဲ့ပါတယ္၊&lt;/p&gt;
 
-	_________________________
+&lt;p&gt;Laravel , Rails အစရိွတဲ့ နာမည္ေက်ာ္ Framework ေတြမွာ built in ပါ၀င္သလို Express Js အတြက္ဆိုရင္လည္း knex လို Third party Library သံုးျပီး စီမံနိုင္မွာပါ၊အခု လာမယ့္ tutorial ေတြမွာေတာ့ က်ေနာ္က Laravel Migration အေျကာင္းကို ရွင္းျပသြားမွာျဖစ္ပါတယ္.&lt;/p&gt;
 
-    $data=$user-&amp;gt;posts()-&amp;gt;where('visited_count',2)-&amp;gt;get();
+&lt;p&gt;&lt;strong&gt;Migrations are like version control for your database, allowing a team to easily modify and share the application’s database schema. Migrations are typically paired with Laravel’s schema builder to easily build your application’s database schema.&lt;/strong&gt;&lt;/p&gt;
 
-    query object ျဖစ္တဲ့အတြက္ get() method ကို call ျပီးမွသာ data ကိုဆြဲထုတ္လို့ရမွျဖစ္ပါတယ္
+&lt;p&gt;&lt;em&gt;From Laravel Documentation&lt;/em&gt;&lt;/p&gt;
 
-
-&lt;/code&gt;
-&lt;/pre&gt;
-
-&lt;pre&gt;
-&lt;code&gt;
-
-#Diff2 conditions
-
-	$data=$user-&amp;gt;posts-&amp;gt;where('visited_count','&amp;gt;',2);
-
-	$data=$user-&amp;gt;posts-&amp;gt;where('visited_count','&amp;lt;',2);
-
-	အထက္ပါ code ၂ ေျကာင္းလုံုး အလုပ္လုပ္မွျမဟုတ္ပါဘူး
-
-	collection object ၇ဲ့ where method သည္ argument1 နဲ့ argument2 တူသာကုိဘဲ စစ္ထုတ္ေပးနိုင္ပါတယ္
-
-	greater than or less than ျပီးေတာ့ like query လိုမ်ိုးသံုးလို့မရပါဘူး
-
-	#Alternative Approach for collection to check greater than or less than or some other condition
-
-	$filtered = $data-&amp;gt;filter(function ($item) {
-	
-		return $item-&amp;gt;visited_count &amp;gt; 2;
-	
-	});
-
-	အထက္ပါ code သည္ visited_count 2 ထက္မ်ားတာကိုေပးပါလိမ့္မယ္
-	_________________________
-
-
-    $data=$user-&amp;gt;posts()-&amp;gt;where('visited_count','&amp;gt;',2)-&amp;gt;get();
-
-    query object ျဖစ္တဲ့အတြက္ အထက္ပါ code ဟာအလုပ္လုပ္ပါတယ္
-
-
-&lt;/code&gt;
-&lt;/pre&gt;
-
-&lt;pre&gt;
-&lt;code&gt;
-
-#Diff3 performance
-
-
-
-	$data=$user-&amp;gt;posts-&amp;gt;where('category_id',2);
-
-	အထက္ပါ code သည္ post အားလံုးကိုဆြဲထုတ္ျပီးမွ ရလာတဲ့ collection object ကို 
-	filter ျပန္လုပ္တဲ့ အတြက္ေျကာင့္ ိdata အရမ္းမ်ားတဲ့အခါ performance က်နုိင္ပါတယ္
-
-
-	_________________________
-
-    $data=$user-&amp;gt;posts()-&amp;gt;where('category_id',2)-&amp;gt;get();
-
-    အထက္ပါ code ကေတာ့ database မွာ condition စစ္တြဲ့အတြက္ ပိုမိုေကာင္းမြန္တဲ့ performance မိ်ုေပးနိုင္ပါတယ္
-
-&lt;/code&gt;
-&lt;/pre&gt;
-
+&lt;p&gt;THANK YOU FOR READING !    See you Again :)&lt;/p&gt;
 </description>
         <pubDate>Wed, 21 Oct 2015 00:38:34 +0630</pubDate>
-        <link>http://pyaesone17.github.io/veve/veve/tutorial/2015/10/21/eloquent.html</link>
-        <guid isPermaLink="true">http://pyaesone17.github.io/veve/veve/tutorial/2015/10/21/eloquent.html</guid>
+        <link>http://pyaesone17.github.io/veve/veve/tutorial/2015/10/21/laravelmigration.html</link>
+        <guid isPermaLink="true">http://pyaesone17.github.io/veve/veve/tutorial/2015/10/21/laravelmigration.html</guid>
         
         
-        <category>tutorial</category>
+        <category>Tutorial</category>
         
       </item>
     
@@ -147,7 +74,7 @@
 &lt;p&gt;&lt;font color=&quot;#ce0000&quot;&gt;select2 css, select js စတဲ့ resource က page တိုင္းမွာမလိုအပ္ပါဘူး.&lt;/font&gt;&amp;nbsp;Item Create လုပ္တ့ဲ Page တစ္ခုမွာဘဲ အသံုးလိုတာပါ.&lt;/p&gt;
 &lt;p&gt;default layout မွာ တစ္ခါတည္း select 2 dependency ကို ေျကျငာခဲ့လို့ရပါတယ္.သို့ေသာ္ အလကား သက္သက္&lt;/p&gt;
 &lt;p&gt;client download data ပိုမ်ားလာမွာျဖစ္တဲ့အတြက္ လိုအပ္တဲ့ page&amp;nbsp;ေနရာမွာဘဲေခါ္သံုးတာကပိုအဆင္ေျပေစမွာပါ. &lt;/p&gt;
-&lt;p&gt;select 2 ကို instantiate လုပ္တဲ့&lt;font color=&quot;#0000ff&quot;&gt; &amp;nbsp;&lt;/font&gt;&lt;span style=&quot;line-height: 1.42857143;&quot;&gt;&lt;font color=&quot;#0000ff&quot;&gt;$('.permission').select2(); &amp;nbsp;ဆိုတဲ့code&amp;nbsp;&lt;/font&gt;ကိုလဲ က်ေနာ္ sub page ျဖစ္တဲ့ create.blade.php မွာေရးမွျဖစ္မွာပါ. &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;select 2 ကို instantiate လုပ္တဲ့&lt;font color=&quot;#0000ff&quot;&gt; &amp;nbsp;&lt;/font&gt;&lt;span style=&quot;line-height: 1.42857143;&quot;&gt;&lt;font color=&quot;#0000ff&quot;&gt;$(&#39;.permission&#39;).select2(); &amp;nbsp;ဆိုတဲ့code&amp;nbsp;&lt;/font&gt;ကိုလဲ က်ေနာ္ sub page ျဖစ္တဲ့ create.blade.php မွာေရးမွျဖစ္မွာပါ. &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span style=&quot;line-height: 1.42857143;&quot;&gt;Main Layout မွာေရးပါက တခ်ို့ select2 မသံုးတဲ့ page&amp;nbsp;ေတြအတြက္ script error&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;line-height: 1.42857143;&quot;&gt;ေပါ္ဿ မွာစုိးတဲ့အတြက္ပါ&lt;/span&gt;&lt;span style=&quot;line-height: 1.42857143;&quot;&gt;.&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span style=&quot;line-height: 1.42857143;&quot;&gt;&lt;br /&gt;&lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;&lt;span style=&quot;line-height: 1.42857143;&quot;&gt; &lt;/span&gt;&lt;/p&gt;
@@ -178,7 +105,125 @@
         <guid isPermaLink="true">http://pyaesone17.github.io/veve/veve/tutorial/2015/10/21/blade.html</guid>
         
         
-        <category>tutorial</category>
+        <category>Tutorial</category>
+        
+      </item>
+    
+      <item>
+        <title>Eloquent handy!</title>
+        <description>&lt;p&gt;In this tutorial I will talk about Eloquent tricks that everyone should know.&lt;/p&gt;
+
+&lt;pre&gt;
+&lt;code&gt;
+	$data=$user-&amp;gt;posts;
+	is work as
+	$data=$user-&amp;gt;posts()-&amp;gt;get();
+&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Collection Where and Query Builder Where&lt;/p&gt;
+
+&lt;pre&gt;
+&lt;code&gt;
+
+	$data=$user-&amp;gt;posts-&amp;gt;where(&#39;visited_count&#39;,2);
+	ဒါက collection object မွာ where သံုးထားတာပါ. သည္ where method ဒီ 
+	query builder where method မဟုတ္ေျကာင္းသတိျပုဖို့လိုပ္တယ္. 
+	collection object မွာ သံုးလို့ရတဲ့ collection where method တစ္ုချဖစ္ပါတယ္
+
+	$data=$user-&amp;gt;posts()-&amp;gt;where(&#39;visited_count&#39;,2)-&amp;gt;get();
+
+	ဒါကေတာ့ query builder ရဲ့ where method ကိုသံုးျပီး database ထဲက visited_count &#39;2&#39; နဲ့ ညီတာကို ဆြဲထုတ္ျပသြားတာပါ
+    
+
+&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Different Between collection Where method and Query Builder Where&lt;/p&gt;
+
+&lt;pre&gt;
+&lt;code&gt;
+
+#Diff1 fetching
+
+	$data=$user-&amp;gt;posts-&amp;gt;where(&#39;visited_count&#39;,2);
+
+	collection object ျဖစ္တဲ့အတြက္ တစ္ခါထဲ condition စစ္ျပီး ဆြဲထုတ္လုိ့ရပါတယ္
+
+	_________________________
+
+    $data=$user-&amp;gt;posts()-&amp;gt;where(&#39;visited_count&#39;,2)-&amp;gt;get();
+
+    query object ျဖစ္တဲ့အတြက္ get() method ကို call ျပီးမွသာ data ကိုဆြဲထုတ္လို့ရမွျဖစ္ပါတယ္
+
+
+&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;pre&gt;
+&lt;code&gt;
+
+#Diff2 conditions
+
+	$data=$user-&amp;gt;posts-&amp;gt;where(&#39;visited_count&#39;,&#39;&amp;gt;&#39;,2);
+
+	$data=$user-&amp;gt;posts-&amp;gt;where(&#39;visited_count&#39;,&#39;&amp;lt;&#39;,2);
+
+	အထက္ပါ code ၂ ေျကာင္းလုံုး အလုပ္လုပ္မွျမဟုတ္ပါဘူး
+
+	collection object ၇ဲ့ where method သည္ argument1 နဲ့ argument2 တူသာကုိဘဲ စစ္ထုတ္ေပးနိုင္ပါတယ္
+
+	greater than or less than ျပီးေတာ့ like query လိုမ်ိုးသံုးလို့မရပါဘူး
+
+	#Alternative Approach for collection to check greater than or less than or some other condition
+
+	$filtered = $data-&amp;gt;filter(function ($item) {
+	
+		return $item-&amp;gt;visited_count &amp;gt; 2;
+	
+	});
+
+	အထက္ပါ code သည္ visited_count 2 ထက္မ်ားတာကိုေပးပါလိမ့္မယ္
+	_________________________
+
+
+    $data=$user-&amp;gt;posts()-&amp;gt;where(&#39;visited_count&#39;,&#39;&amp;gt;&#39;,2)-&amp;gt;get();
+
+    query object ျဖစ္တဲ့အတြက္ အထက္ပါ code ဟာအလုပ္လုပ္ပါတယ္
+
+
+&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;pre&gt;
+&lt;code&gt;
+
+#Diff3 performance
+
+
+
+	$data=$user-&amp;gt;posts-&amp;gt;where(&#39;category_id&#39;,2);
+
+	အထက္ပါ code သည္ post အားလံုးကိုဆြဲထုတ္ျပီးမွ ရလာတဲ့ collection object ကို 
+	filter ျပန္လုပ္တဲ့ အတြက္ေျကာင့္ ိdata အရမ္းမ်ားတဲ့အခါ performance က်နုိင္ပါတယ္
+
+
+	_________________________
+
+    $data=$user-&amp;gt;posts()-&amp;gt;where(&#39;category_id&#39;,2)-&amp;gt;get();
+
+    အထက္ပါ code ကေတာ့ database မွာ condition စစ္တြဲ့အတြက္ ပိုမိုေကာင္းမြန္တဲ့ performance မိ်ုေပးနိုင္ပါတယ္
+
+&lt;/code&gt;
+&lt;/pre&gt;
+
+</description>
+        <pubDate>Wed, 21 Oct 2015 00:38:34 +0630</pubDate>
+        <link>http://pyaesone17.github.io/veve/veve/tutorial/2015/10/21/eloquent.html</link>
+        <guid isPermaLink="true">http://pyaesone17.github.io/veve/veve/tutorial/2015/10/21/eloquent.html</guid>
+        
+        
+        <category>Tutorial</category>
         
       </item>
     

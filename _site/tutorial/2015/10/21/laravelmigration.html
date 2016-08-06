@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Laravel Migration Part I!</title>
+  <meta name="description" content="In this tutorial I will talk about Database Migration, How it is realated to version Control and Many More.">
+
+  <link rel="stylesheet" href="/veve/css/bootstrap.css">
+
+  <link rel="stylesheet"  href="/veve/css/stylish-portfolio.css">
+
+  <link rel="canonical" href="http://pyaesone17.github.io/veve/veve/tutorial/2015/10/21/laravelmigration.html">
+  <link rel="alternate" type="application/rss+xml" title="Nyan Win" href="http://pyaesone17.github.io/veve/veve/feed.xml" />
+
+    <link href="/veve/js/textile/assets/animate.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href=" /veve/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+    <!-- jQuery Version 1.11.0 -->
+  <body>
+
+    <!-- Header -->
+    <header id="top" class="header1">
+
+        <div class="text-vertical-center">
+            <h1 class="tlt" data-in-effect="fadeIn">Nyan Win</h1>
+            <h3 class="second" data-in-effect="fadeIn">#Be Inspiration</h3>
+            <br>
+            <a href="/veve/" class="btn btn-dark btn-lg" id="find">Home</a>
+        </div>
+    </header>
+
+    <!-- Services -->
+    <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
+    <section id="services" class="services" style="background:white">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h2 class="wow zoomIn"  data-wow-delay="0.3s" style="font-size: 38px">My Blog about Laravel , PHP , Vue and Others ...</h2>
+                        </div>
+                    </div>
+                    <hr >
+                  <div class="page-content">
+                    <div class="wrapper">
+                        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title" style="font-size: 36px">Laravel Migration Part I!</h1>
+    <p class="post-meta">Oct 21, 2015</p>
+  </header>
+
+  <article class="post-content">
+    <p>In this tutorial I will talk about Database Migration, How it is realated to version Control and Many More.</p>
+
+<h2 id="introduction">1.INTRODUCTION</h2>
+
+<p>Laravel ကို စေလ့လာတာနဲ့ ပံုမွန္အားျဖင့္ က်ေနာ္တို့က Request, Response, Controller, Route ျပီးရင္ Eloquent ကို အေလးေပးျပီးျကည့္က်တာ မ်ားပါတယ္၊ ပံုမွန္အားျဖင့္လည္း အဲ့အပုိင္းေတြက Application တည္ေဆာက္ရာမွာ အဓိက က်တဲ့ အပုိင္းေတြျဖစ္တာေျကာင့္လည္းပါ ပါတယ္၊</p>
+
+<p>ဒီ Migration ကို က်ေနာ္ေရးဖို့လဲ စိတ္ကူးမရိွခဲ့ပါဘူး၊ သုိ့ေသာ္ အခုေနာက္ပိုင္း က်ေနာ္ေတြ့ဆံု ခဲ့ရတဲ့ Developer အခ်ို့က  <strong>PHP My Admin နဲ့ဆို UI ပါရတယ္၊ ျပင္လိုက္ရင္လြယ္တာေပါ့. Migration ကို ဘာလို့သံုးတာလဲ</strong>၊ လို့ေမးလာတဲ့အတြက္ က်ေနာ္သိသေလာက္ ေရးျပီးေ၀မွ်လိုက္ပါတယ္ ၊</p>
+
+<p>က်ေနာ့္ အျမင္အရေတာ့့PHP My Admin သည္ အလြန္ေကာင္းမြန္တဲ့ Software ပါ ၊ သို့ေသာ္ က်ေနာ္တို့က “<strong>Chose the right tool for the right place</strong>” ဆိုတဲ့ စကားနဲ့ အညီ ဆံုးျဖတ္ရမွာျဖစ္ပါတယ္၊ ဘာအေျကာင္းေျကာင့္ Migration သံုးရတာလဲ ဘယ္ေနရာမွာ Migration ကို သံုးသင့္သလဲ၊ Migration သံုးရျခင္းေျကာင္းျဖစ္ေပါလာမဲ့ ေကာင္းက်ိုးဆိုးက်ိုးေတြကို ရွင္းျပသြားမွာပါ၊</p>
+
+<h2 id="problem">2.PROBLEM</h2>
+
+<p>က်ေနာ္တို့ Team နဲ့အလုပ္လုပ္ ရျပီဆိုရင္ အသင္းရဲ့ member ၀င္တစ္ေယာက္ေယာက္ရဲ့ ေျပာင္းလဲလိုက္သည့္ Database Schema ကို အျမဲ မျပတ္ သိဖို့လိုအပ္လာပါတယ္၊ ဒါမွသာ Develop လုပ္ေနတဲ့ App က Error ကင္းကင္းနဲ့ အလုပ္လုပ္နိုင္မွာပါ၊</p>
+
+<p>က်ေနာ္တို့ ေတာ္ေတာ္မ်ားမ်ားျကံုဖူးမွာပါ၊    “ဟာ အခုေလးတင္ Code က အလုပ္လုပ္ေနေသးတယ္၊ Git Pull လုပ္ျပီးမွ Code ေတြ အလုပ္မလုပ္ေတာ့ဘူး . Error Log မွာေတာ့ Database Column မရိွလို့ျဖစ္တယ္ျပေနတယ္ , ဘယ္သူ Database Update လုပ္ေသးလဲ“   ဒီစကားေလးက Developer ေတာ္ေတာ္မ်ားမ်ား ျငီးသြားဖူးမွာပါ ၊</p>
+
+<p>ျငီးတြားျပီးရင္ေတာ့ PHP My Admin ကိုဖြင့္ ၊ Column ေတြကို manual နဲ့ create လုပ္ရအံုးမွာ၊ Geek ဆိုရင္ေတာ့ terminal ထဲသြားျပီး Alter table blah blah ေတြရိုက္ရမွာေပ့ါ၊ Database  changes သိပ္မရိွဘဲ   develop လုပ္ရတဲ့ APP မ်ိုး၊ ဒါမွမဟုတ္ Table Structure အားလံုးကို တစ္ခါတည္း Analysis ေလ့ရိွတဲ့ SSADM methodology မ်ိုးဆိုရင္ေတာ့ ပံုမွန္ Traditional နည္းလမ္း နဲ့ အဆင္ေျပေနမွာပါ၊</p>
+
+<h2 id="agile-and-migration">3.AGILE AND MIGRATION</h2>
+
+<p>Aglie လို methodology က Iterative Devlopment ျဖစ္တဲ့ အတြက္ Code ေတြ Database ေတြဟာ အခ်ိန္နဲ့ အမွ်အျမဲတမ္းေျပာင္းလဲေနမွာပါ၊ ေျပာင္းလဲေနတဲ့ Code ေတြနဲ့ အညီေျပာင္းလဲသြားတဲ့ Database structure ကို version control လုပ္ျပီး မွတ္သားထားဖုိ့လိုပါတယ္၊</p>
+
+<p>Code ေတြအတြက္ Version Control ကို Git Hub မွအလြယ္တကူ မွတ္သားနိုင္ေပမယ့္ ၊ ေျပာင္းလဲသြားတဲ့ Database Structure ကို sql File ျဖစ္ Export လုပ္ျပီး Git နဲ့ တင္ဖို့က်ေတ့ာ အဆင္မေျပပါဘူး၊</p>
+
+<p>ဒီေနရာမွာ Database Structure ကို Version Control လုပ္ေပးနိုင္တဲ့ Migration Tool ေတြကို အသံုးျပုဖို့လိုအပ္လာခဲ့ပါတယ္၊ Agile ေခတ္စားလာတာနဲ့ အညီ Migration Tool ေတြဟာ အခုေနာက္ပိုင္း Modern Framework ေတြမွာ Out of The Box Feature အျဖစ္ပါ၀င္လာခဲ့ပါတယ္၊</p>
+
+<p>Laravel , Rails အစရိွတဲ့ နာမည္ေက်ာ္ Framework ေတြမွာ built in ပါ၀င္သလို Express Js အတြက္ဆိုရင္လည္း knex လို Third party Library သံုးျပီး စီမံနိုင္မွာပါ၊အခု လာမယ့္ tutorial ေတြမွာေတာ့ က်ေနာ္က Laravel Migration အေျကာင္းကို ရွင္းျပသြားမွာျဖစ္ပါတယ္.</p>
+
+<p><strong>Migrations are like version control for your database, allowing a team to easily modify and share the application’s database schema. Migrations are typically paired with Laravel’s schema builder to easily build your application’s database schema.</strong></p>
+
+<p><em>From Laravel Documentation</em></p>
+
+<p>THANK YOU FOR READING !    See you Again :)</p>
+
+  </article>
+
+</div>
+ 
+                    </div>
+                  </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <div class="col-lg-3" style="padding-left: 20px">
+                    <h2>You may also read </h2>
+                    <div class="col-lg-12">    
+                        <h4><a href="/tutorial/2015/10/21/laravelmigration.html">Laravel Migration Part I!</a></h4>
+                        <p><small><strong>October 21, 2015</strong> .  . <a href="http://erjjones.github.com/tutorial/2015/10/21/laravelmigration.html#disqus_thread"></a></small></p>            
+                        
+                        <h4><a href="/tutorial/2015/10/21/blade.html">Keep Your Blade Sharp!</a></h4>
+                        <p><small><strong>October 21, 2015</strong> .  . <a href="http://erjjones.github.com/tutorial/2015/10/21/blade.html#disqus_thread"></a></small></p>            
+                        
+                        <h4><a href="/tutorial/2015/10/21/eloquent.html">Eloquent handy!</a></h4>
+                        <p><small><strong>October 21, 2015</strong> .  . <a href="http://erjjones.github.com/tutorial/2015/10/21/eloquent.html#disqus_thread"></a></small></p>            
+                    </div>
+                </div>
+                <!-- /.col-lg-10 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+    </section>
+
+
+    <!-- Footer -->
+ <footer style="background-color:#F5F5F5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 text-center">
+                    <h4><strong>Address</strong>
+                    </h4>
+
+                    <p>No (1),Sanchaung, Tan tadar Street, 3rd Floor Yangon</p>
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-phone fa-fw"></i> ( 09 ) 43160544, ( 09 ) 974970784</li>
+                        <li><i class="fa fa-envelope-o fa-fw"></i>  <a href="mailto:name@example.com"> vevelay286@gmail.com</a>
+                        </li>
+                    </ul>
+                    <br>
+                    <ul class="list-inline">
+                        <li>
+                            <a href="https://www.facebook.com/pyae.s.nyein"><i class="fa fa-facebook fa-fw fa-3x wow swing" data-wow-delay="1s"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/VeVePromise286"><i class="fa fa-twitter fa-fw fa-3x wow swing" data-wow-delay="2s"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-dribbble fa-fw fa-3x wow swing" data-wow-delay="3s"></i></a>
+                        </li>
+                    </ul>
+                    <hr class="small">
+                    <p class="text-muted">Copyright &copy; Nyan Win 2015</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/veve/js/jquery-1.11.0.js"></script> 
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/veve/js/bootstrap.min.js"></script>
+
+    <script src="/veve/js/textile/assets/jquery.lettering.js"></script>
+
+    <script src="/veve/js/textile/assets/jquery.fittext.js"></script>
+
+    <script src="/veve/js/textile/jquery.textillate.js"></script>
+
+    <script src="/veve/js/mixitup/mixitup.js"></script>
+
+    <script src="/veve/js/wow/wow.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script>
+    $('document').ready(function(){
+
+    $(function () {
+        
+        $('.tlt').textillate();
+
+        $('.second').textillate({
+            
+            initialDelay: 400,
+            
+            callback: function () {
+
+                $("#find").css("visibility","visible").addClass('animated fadeInUp');
+
+            }
+        });
+    });
+    
+
+    $(function(){
+        $('#Container').mixItUp();
+    });
+    
+    // Closes the sidebar menu
+    $("#menu-close").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+
+    // Opens the sidebar menu
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("active");
+    });
+
+    // Scrolls to the selected menu item on the page
+    $(function() {
+
+    new WOW().init();
+
+
+        $('a[href*=#]:not([href=#])').click(function() {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') || location.hostname == this.hostname) {
+
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+    });        
+    })
+    </script>
+
+  </body>
+
+</html>
