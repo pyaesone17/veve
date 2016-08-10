@@ -8,11 +8,11 @@ layout: default
     <ul class="post-list list-grooup">
         {% for post in site.posts %}
         <li class="list-group-item">
-            <span class="post-meta">
+            <span class="post-meta zawgyi">
                 {{ post.date | date: "%b %-d, %Y" }}
             </span>
             <h2>
-                <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">
+                <a class="post-link zawgyi" href="{{ post.url | prepend: site.baseurl }}">
                     {{ post.title }}
                 </a>
             </h2>
