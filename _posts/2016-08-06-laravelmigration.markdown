@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Laravel Migration Part I!"
-date:   2015-10-20 18:08:34
+date:   2016-08-06 18:08:34
 categories: Tutorial
 ---
 In this tutorial I will talk about Database Migration, How it is realated to version Control and Many More.

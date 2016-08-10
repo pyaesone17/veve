@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Keep Your Blade Sharp!"
-date:   2015-10-20 18:08:34
+date:   2015-11-20 18:08:34
 categories: Tutorial
 ---
 In this tutorial I will talk about Blade tricks that everyone should know.
