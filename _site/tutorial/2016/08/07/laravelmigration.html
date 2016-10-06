@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+	
   <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,8 +13,8 @@
 
   <link rel="stylesheet"  href="/veve/css/stylish-portfolio.css">
 
-  <link rel="canonical" href="http://pyaesone17.github.io/veve//veve/tutorial/2016/08/07/laravelmigration.html">
-  <link rel="alternate" type="application/rss+xml" title="Nyan Win" href="http://pyaesone17.github.io/veve//veve/feed.xml" />
+  <link rel="canonical" href="http://127.0.0.1:4000/veve//veve/tutorial/2016/08/07/laravelmigration.html">
+  <link rel="alternate" type="application/rss+xml" title="Nyan Win" href="http://127.0.0.1:4000/veve//veve/feed.xml" />
 
     <link href="/veve/js/textile/assets/animate.css" rel="stylesheet">
 
@@ -31,13 +31,18 @@
     </style>    
 </head>
 
-    <!-- jQuery Version 1.11.0 -->
+   <style type="text/css">
+   .post-content p{
+   		overflow-x: auto;
+   	}
+   </style> 
+   <!-- jQuery Version 1.11.0 -->
   <body>
 
     <!-- Header -->
     <header id="top" class="header1">
 
-        <div class="text-vertical-center">
+        <div class="text-vertical-center" style="text-align: left;padding-left: 50px">
             <h1 class="tlt" data-in-effect="fadeIn">Nyan Win</h1>
             <h3 class="second" data-in-effect="fadeIn">#Be Inspiration</h3>
             <br>
@@ -47,26 +52,20 @@
 
     <!-- Services -->
     <!-- The circle icons use Font Awesome's stacked icon classes. For more information, visit http://fontawesome.io/examples/ -->
-    <section id="services" class="services" style="background:white">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-9">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h2 class="wow zoomIn"  data-wow-delay="0.3s" style="font-size: 38px">My Blog about Laravel , PHP , Vue and Others ...</h2>
-                        </div>
-                    </div>
-                    <hr >
+    <section id="services" class="services" style="background:white;padding: 0px">
+        <div class="container-fluid">
+            <div>
+                <div class="row">
                   <div class="page-content">
                     <div class="wrapper zawgyi">
                         <div class="post">
 
-  <header class="post-header">
+  <header class="post-header" style="padding: 50px;padding-bottom: 0px">
     <h1 class="post-title" style="font-size: 36px">Laravel Migration Part I!</h1>
     <p class="post-meta">Aug 7, 2016</p>
   </header>
 
-  <article class="post-content">
+  <article class="post-content" style="overflow-x: hidden;padding: 50px">
     <p>In this tutorial I will talk about Database Migration, How it is realated to version Control and Many More.</p>
 
 <h2 id="introduction">1.INTRODUCTION</h2>
@@ -110,16 +109,27 @@
                     <!-- /.row (nested) -->
                 </div>
                 <div class="col-lg-3" style="padding-left: 20px">
-                    <h2>You may also read </h2>
-                    <div class="col-lg-12 zawgyi">    
+                    <h3 class="col-lg-12">You may also read </h3>
+                    <div class="col-lg-12 zawgyi">
+                    	<div class="sidebar__post">    
+                        <h4><a href="/veve/tutorial/2016/08/26/facade-pattern-in-laravel.html">Exploring Facade Pattern In Laravel!</a></h4>
+                        <p><small><strong>August 26, 2016</strong> .  . <a href="http://erjjones.github.com/tutorial/2016/08/26/facade-pattern-in-laravel.html#disqus_thread"></a></small></p>
+                        </div>            
+                    
+                    	<div class="sidebar__post">    
                         <h4><a href="/veve/tutorial/2016/08/07/laravelmigration.html">Laravel Migration Part I!</a></h4>
-                        <p><small><strong>August  7, 2016</strong> .  . <a href="http://erjjones.github.com/tutorial/2016/08/07/laravelmigration.html#disqus_thread"></a></small></p>            
-                        
+                        <p><small><strong>August  7, 2016</strong> .  . <a href="http://erjjones.github.com/tutorial/2016/08/07/laravelmigration.html#disqus_thread"></a></small></p>
+                        </div>            
+                    
+                    	<div class="sidebar__post">    
                         <h4><a href="/veve/tutorial/2015/11/21/blade.html">Keep Your Blade Sharp!</a></h4>
-                        <p><small><strong>November 21, 2015</strong> .  . <a href="http://erjjones.github.com/tutorial/2015/11/21/blade.html#disqus_thread"></a></small></p>            
-                        
+                        <p><small><strong>November 21, 2015</strong> .  . <a href="http://erjjones.github.com/tutorial/2015/11/21/blade.html#disqus_thread"></a></small></p>
+                        </div>            
+                    
+                    	<div class="sidebar__post">    
                         <h4><a href="/veve/tutorial/2015/10/21/eloquent.html">Eloquent handy!</a></h4>
-                        <p><small><strong>October 21, 2015</strong> .  . <a href="http://erjjones.github.com/tutorial/2015/10/21/eloquent.html#disqus_thread"></a></small></p>            
+                        <p><small><strong>October 21, 2015</strong> .  . <a href="http://erjjones.github.com/tutorial/2015/10/21/eloquent.html#disqus_thread"></a></small></p>
+                        </div>            
                     </div>
                 </div>
                 <!-- /.col-lg-10 -->
