@@ -13,8 +13,8 @@
 
   <link rel="stylesheet"  href="/veve/css/stylish-portfolio.css">
 
-  <link rel="canonical" href="http://127.0.0.1:4000/veve//veve/tutorial/2016/08/26/facade-pattern-in-laravel.html">
-  <link rel="alternate" type="application/rss+xml" title="Nyan Win" href="http://127.0.0.1:4000/veve//veve/feed.xml" />
+  <link rel="canonical" href="http://pyaesone17.github.io/veve//veve/tutorial/2016/08/26/facade-pattern-in-laravel.html">
+  <link rel="alternate" type="application/rss+xml" title="Nyan Win" href="http://pyaesone17.github.io/veve//veve/feed.xml" />
 
     <link href="/veve/js/textile/assets/animate.css" rel="stylesheet">
 
@@ -113,7 +113,7 @@ Facade ဆိုတာဘာလဲ ဆိုတာ နမူနာ ျကည့�
 
 <p>PHP နည္းအရ ျကည့္မယ္ဆိုရင္ Request class ထဲမွာရိွတဲ့ public static function except  ကို သြားေခါျပီး အလုပ္လုပ္ေပးရမွာပါ၊ ဘာေျကာင့္လဲဆိုေတာ့ :: scope resolution operator သည္ static အတြက္သာ ေခါသံုးလို့ရတဲ့ အတြက္ေျကာင့္ျဖစ္ပါတယ္၊ </p>
 
-<p><img src="http://127.0.0.1:4000/veve/img/facade-1.jpg" alt="enter image description here" title="" /></p>
+<p><img src="http://pyaesone17.github.io/veve/img/facade-1.jpg" alt="enter image description here" title="" /></p>
 
 <p>static ေျကျငာမထားသည့္ method</p>
 
@@ -122,7 +122,7 @@ Facade ဆိုတာဘာလဲ ဆိုတာ နမူနာ ျကည့�
 <p>ဟုတ္ျပီ ဘယ္လိုမ်ား Laravel က scope resolution operator ကို ခါသံုးလို့ရေအာင္ လုပ္ထားပါသလဲ ? သင္လဲ စိတ္၀င္စားလာျပီ ဟုတ္တယ္မလား xP  <br />
 ဒီေတာ့ က်ေနာ္တို့ ယူသံုးထားတဲ့ Request Facade ကိုရွာေဖြျကည့္ပါတယ္၊</p>
 
-<p><img src="http://127.0.0.1:4000/veve/img/facade-2.jpg" alt="enter image description here" title="" /> <br />
+<p><img src="http://pyaesone17.github.io/veve/img/facade-2.jpg" alt="enter image description here" title="" /> <br />
 Request Facade Class</p>
 
 <p>ဒါကေတာ့ Request Facade object ျဖစ္ျပီး ‘request’ ဆိုတဲ့ string တစ္ေျကာင္းကိုသာ return  ျပန္ထားပါတယ္၊ျပီးေတာ့ Facade class ကို extends လုပ္ထားတာေတြ့ရမွာပါ၊ ဒါကေတာ့ Facade register လုပ္ရာမွာ လိုက္နာရမဲ့ နည္းျဖစ္ပါတယ္၊ အေသးစိတ္ register လုပ္နည္းကိုေတာ့ ေအာက္ကလင့္ခ္မွာေလ့လာနုိင္ပါတယ္၊  <br />
@@ -131,7 +131,7 @@ Request Facade Class</p>
 <p>Request Facade ရဲ့ parent class ျဖစ္တဲ့ Illuminate\Support\Facades\Facade; မွာေတာ့ က်ေနာ္တို့ရွာေနတဲ့ သဲလြန္စကို ေတြ့နိုင္ပါတယ္၊  <br />
 __callStatic method သည္ php magic method တစ္ခုျဖစ္ျပီး class ထဲ ၇ိွ မသတ္မွတ္ထား သည့္ static method မ်ားကို ေခါသည့္အခါ invoke လုပ္မည့္ method တစ္ခုျဖစ္သည္၊ </p>
 
-<p><img src="http://127.0.0.1:4000/veve/img/facade-3.jpg" alt="enter image description here" title="" /></p>
+<p><img src="http://pyaesone17.github.io/veve/img/facade-3.jpg" alt="enter image description here" title="" /></p>
 
 <p>ဒါဆို က်ေနာ္တို့ ဘယ္လို အလုပ္လုပ္သြားလဲ ျပန္ျပည့္ရေအာင္၊</p>
 
@@ -179,6 +179,11 @@ $request-&gt;except(‘_token’); // get static method name and apply on object
                 <div class="col-lg-3" style="padding-left: 20px">
                     <h3 class="col-lg-12">You may also read </h3>
                     <div class="col-lg-12 zawgyi">
+                    	<div class="sidebar__post">    
+                        <h4><a href="/veve/tutorial/2016/10/10/digging-into-eloquent-orm.html">Digging Into Eloquent ORM !</a></h4>
+                        <p><small><strong>October 10, 2016</strong> .  . <a href="http://erjjones.github.com/tutorial/2016/10/10/digging-into-eloquent-orm.html#disqus_thread"></a></small></p>
+                        </div>            
+                    
                     	<div class="sidebar__post">    
                         <h4><a href="/veve/tutorial/2016/08/26/facade-pattern-in-laravel.html">Exploring Facade Pattern In Laravel!</a></h4>
                         <p><small><strong>August 26, 2016</strong> .  . <a href="http://erjjones.github.com/tutorial/2016/08/26/facade-pattern-in-laravel.html#disqus_thread"></a></small></p>

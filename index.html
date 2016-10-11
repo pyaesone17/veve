@@ -3,19 +3,20 @@ layout: default
 ---
 <div class="home">
     <h1 class="page-heading">
-        Posts
+        Posts I have written so far .
     </h1>
     <ul class="post-list list-grooup">
         {% for post in site.posts %}
-        <li class="list-group-item">
-            <span class="post-meta zawgyi">
-                {{ post.date | date: "%b %-d, %Y" }}
-            </span>
-            <h2>
-                <a class="post-link zawgyi" href="{{ post.url | prepend: site.baseurl }}">
+        <li class="list-group-item" style="padding:65px 50px 65px 50px;border: 0px;box-shadow:3px 3px 20px -3px rgba(156,162,171,1)">
+            <h2 style="text-align: left;margin-top: -20px">
+                <a class="post-link zawgyi" href="{{ post.url | prepend: site.baseurl }}" style="color: #3a6daf">
                     {{ post.title }}
                 </a>
             </h2>
+	       <span class="post-meta zawgyi pull-left">
+                {{ post.date | date: "%b %-d, %Y" }}
+            </span>            
+            <a class="pull-right" style="font-size: 14px" href="{{ post.url | prepend: site.baseurl }}"> Read More .... </a>
         </li>
         {% endfor %}
     </ul>
