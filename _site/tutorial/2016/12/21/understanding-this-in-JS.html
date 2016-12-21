@@ -6,14 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Eloquent handy!</title>
-  <meta name="description" content="In this tutorial I will talk about Eloquent tricks that everyone should know.">
+  <title>Understanding This keword in Javascript !</title>
+  <meta name="description" content="Javascript စတင္ေလ့လာပါက အမွားအမ်ားဆံုး ျဖစ္ေလ့ျဖစ္ထရိွသည့္ အရာတစ္ခုထဲတြင္ “This” keyword သည္ တစ္ခုအပါအ၀င္ျဖစ္ပါတယ္၊ ဘာေျကာင့္အမွား မ်ားရသလဲဆိုပါက အျခားေသာ pr...">
 
   <link rel="stylesheet" href="/veve/css/bootstrap.css">
 
   <link rel="stylesheet"  href="/veve/css/stylish-portfolio.css">
 
-  <link rel="canonical" href="http://pyaesone17.github.io/veve//veve/tutorial/2015/10/21/eloquent.html">
+  <link rel="canonical" href="http://pyaesone17.github.io/veve//veve/tutorial/2016/12/21/understanding-this-in-JS.html">
   <link rel="alternate" type="application/rss+xml" title="Nyan Win" href="http://pyaesone17.github.io/veve//veve/feed.xml" />
 
     <link href="/veve/js/textile/assets/animate.css" rel="stylesheet">
@@ -61,116 +61,79 @@
                         <div class="post">
 
   <header class="post-header" style="padding: 50px;padding-bottom: 0px">
-    <h1 class="post-title" style="font-size: 36px">Eloquent handy!</h1>
-    <p class="post-meta">Oct 21, 2015</p>
+    <h1 class="post-title" style="font-size: 36px">Understanding This keword in Javascript !</h1>
+    <p class="post-meta">Dec 21, 2016</p>
   </header>
 
   <article class="post-content" style="overflow-x: hidden;padding: 50px">
-    <p>In this tutorial I will talk about Eloquent tricks that everyone should know.</p>
+    <p>Javascript စတင္ေလ့လာပါက အမွားအမ်ားဆံုး ျဖစ္ေလ့ျဖစ္ထရိွသည့္ အရာတစ္ခုထဲတြင္ “This” keyword သည္ တစ္ခုအပါအ၀င္ျဖစ္ပါတယ္၊ ဘာေျကာင့္အမွား မ်ားရသလဲဆိုပါက အျခားေသာ programming language အမ်ားစုတြင္ this သည္ object ကို ရည္ညြန္းက်ေလ့ရိွျပီး javascript တြင္မူ တမူထူးျခားစြာ လုပ္ေဆာင္ေသာေျကာင့္ျဖစ္သည္</p>
 
-<pre>
-<code>
-	$data=$user-&gt;posts;
-	is work as
-	$data=$user-&gt;posts()-&gt;get();
-</code>
-</pre>
+<p><strong>Javascript တြင္ this သည္ function တစ္ခုမည္ကဲ့သို့ invoke လုပ္ျခင္းခံရလဲ ဆိုသည့္အခ်က္ေပါ မ်ားစြာမူတည္ပါတယ္၊</strong></p>
 
-<p>Collection Where and Query Builder Where</p>
+<p>ဥပမာ ဆိုပါစို့ console ထဲတြင္ ေအာက္ပါအတိုင္း function တစ္ခုကို သတ္မွတ္လိုက္ျပီး this ကို return ျပန္လိုက္ျပီး ေနာက္တစ္ေျကာင္းတြင္ invoke လုပ္လုိက္သည္၊</p>
 
-<pre>
-<code>
+<div class="highlighter-rouge"><pre class="highlight"><code>function foo() {
+return this;
+}
+foo() === window;  
+</code></pre>
+</div>
 
-	$data=$user-&gt;posts-&gt;where('visited_count',2);
-	ဒါက collection object မွာ where သံုးထားတာပါ. သည္ where method ဒီ 
-	query builder where method မဟုတ္ေျကာင္းသတိျပုဖို့လိုပ္တယ္. 
-	collection object မွာ သံုးလို့ရတဲ့ collection where method တစ္ုချဖစ္ပါတယ္
+<p>ထြက္လာသည့္ result မွာ true ျဖစ္သည္၊
+အဘယ္ေျကာင့္ဆိုေသာ္ foo ဆိုသည့္ function သည္ default binding ျဖစ္သည့္ window object ေပါတြင္ ေခါယူထားေသာေျကာင့္ျဖစ္သည္၊ ေ
+အာက္ပါ syntax တြင္ ေတြ့ရိွနိုင္သည္၊</p>
 
-	$data=$user-&gt;posts()-&gt;where('visited_count',2)-&gt;get();
+<p>window.foo()===window
+window.foo()===foo();</p>
 
-	ဒါကေတာ့ query builder ရဲ့ where method ကိုသံုးျပီး database ထဲက visited_count '2' နဲ့ ညီတာကို ဆြဲထုတ္ျပသြားတာပါ
-    
+<p>ပိုမိုရွင္းလင္းေစရန္ variable သံုးျပီးျပေပးသြားပါမည္.</p>
 
-</code>
-</pre>
+<div class="highlighter-rouge"><pre class="highlight"><code>var a = ‘global’
+function bar() {
+    var a = 'inner'
+    return this.a;
+}
+bar();
+</code></pre>
+</div>
 
-<p>Different Between collection Where method and Query Builder Where</p>
+<p>အထက္ပါ bar function ကို run ပါက ‘global’ ကို output ေတြ့ရမည္ျဖစ္သည္၊ အဘယ္ေျကာင့္ဆိုေသာ္ “this” သည္ bar function နွင့္မသက္ဆိုင္ဘဲ function မည္သည့္ context ေပါတြင္ invoke လုပ္ခံရလဲဆိုသ့ည့္ အေပါတြင္သာ မူတည္ျခင္းေျကာင့္ျဖစ္သည္၊
+ထို့ေျကာင့္ အနွစ္ ဆိုရေသာ္ javascript တြင္ this ၏ မူလ default binding သည္ window object ျဖစ္သည္၊
+ဒါဆိုရင္ မူလ default binding ကို မသံုးခ်င္ဘူး တျခားေသာ context ကို bind မလဲ ? ေအာက္မွာ နမူနာနွင့္တကြေရးျပသြားမွာပါ.</p>
 
-<pre>
-<code>
+<div class="highlighter-rouge"><pre class="highlight"><code>var name = ‘Mg Mg’;
+var user = { name : ‘john doe’ };
+function sayName(){
+      return this.name;
+}
+</code></pre>
+</div>
 
-#Diff1 fetching
+<p>sayName() ကို run ပါ ဘာထြက္သြားမွာပါလဲ ?  ဟုတ္ပါတယ္ function ၏ default binding သည္ window ျဖစ္သည့္အတြက္ ‘Mg Mg’ ကိုရွာပါ၊
+ဒါဆိုရင္ sayName() ဆိုတဲ့ function ကိုလဲ မျပင္ခ်င္ဘူး၊ 
+this ကို ေတ့ာ window object မဟုတ္ဘဲ တျခားေသာ object သံုးခ်င္တယ္၊ ဘယ္လို လုပ္ရမလဲ၊ လြယ္ပါတယ္၊</p>
 
-	$data=$user-&gt;posts-&gt;where('visited_count',2);
+<div class="highlighter-rouge"><pre class="highlight"><code>sayName.call(user) === ‘john doe’; 
+</code></pre>
+</div>
 
-	collection object ျဖစ္တဲ့အတြက္ တစ္ခါထဲ condition စစ္ျပီး ဆြဲထုတ္လုိ့ရပါတယ္
+<p>call ဆိုသည့္ method ကိုသံုးျပီး user ဆိုသည့္  object ကို pass ေပးလုိက္ျခင္းျဖင့္ sayName() ဆိုသည့္ function ထဲရိွ this ၏ context ကို ေျပာင္းေပးလိုက္ျခင္းျဖင့္ရရိွနိုင္ပါသည္၊ အလြယ္ေျပာရရင္ 
+Hay …. 
+“SayName ဆိုတဲ့ function မင္းထဲမွာရိွတဲ့ thisကို အခုငါေပးလိုက္တဲ့ context ကိုသံုးျပီး run ပါ“ ေပါ့
+Another example</p>
 
-	_________________________
+<div class="highlighter-rouge"><pre class="highlight"><code>var users = [‘nyan win’ ,'pyae sone nyein'];
+function sayName(){
+        return this[1];
+}
 
-    $data=$user-&gt;posts()-&gt;where('visited_count',2)-&gt;get();
+sayName.call(users) === users[1]; ---&gt; true
+</code></pre>
+</div>
 
-    query object ျဖစ္တဲ့အတြက္ get() method ကို call ျပီးမွသာ data ကိုဆြဲထုတ္လို့ရမွျဖစ္ပါတယ္
+<p>က်န္ေနေသးသည့္ constructor function အတြင္းရိွ ‘this’, this ကို ေတြ့ရအမ်ားဆံုး object literal အတြင္းရိွ  method ၏  ‘this’ , event handler အတြင္းရိွ this keyword မ်ားကို ေနာက္ေန့မ်ားတြင္ ဆက္ေရးေပးသြားမွာပါ၊</p>
 
-
-</code>
-</pre>
-
-<pre>
-<code>
-
-#Diff2 conditions
-
-	$data=$user-&gt;posts-&gt;where('visited_count','&gt;',2);
-
-	$data=$user-&gt;posts-&gt;where('visited_count','&lt;',2);
-
-	အထက္ပါ code ၂ ေျကာင္းလုံုး အလုပ္လုပ္မွျမဟုတ္ပါဘူး
-
-	collection object ၇ဲ့ where method သည္ argument1 နဲ့ argument2 တူသာကုိဘဲ စစ္ထုတ္ေပးနိုင္ပါတယ္
-
-	greater than or less than ျပီးေတာ့ like query လိုမ်ိုးသံုးလို့မရပါဘူး
-
-	#Alternative Approach for collection to check greater than or less than or some other condition
-
-	$filtered = $data-&gt;filter(function ($item) {
-	
-		return $item-&gt;visited_count &gt; 2;
-	
-	});
-
-	အထက္ပါ code သည္ visited_count 2 ထက္မ်ားတာကိုေပးပါလိမ့္မယ္
-	_________________________
-
-
-    $data=$user-&gt;posts()-&gt;where('visited_count','&gt;',2)-&gt;get();
-
-    query object ျဖစ္တဲ့အတြက္ အထက္ပါ code ဟာအလုပ္လုပ္ပါတယ္
-
-
-</code>
-</pre>
-
-<pre>
-<code>
-
-#Diff3 performance
-
-
-
-	$data=$user-&gt;posts-&gt;where('category_id',2);
-
-	အထက္ပါ code သည္ post အားလံုးကိုဆြဲထုတ္ျပီးမွ ရလာတဲ့ collection object ကို 
-	filter ျပန္လုပ္တဲ့ အတြက္ေျကာင့္ ိdata အရမ္းမ်ားတဲ့အခါ performance က်နုိင္ပါတယ္
-
-
-	_________________________
-
-    $data=$user-&gt;posts()-&gt;where('category_id',2)-&gt;get();
-
-    အထက္ပါ code ကေတာ့ database မွာ condition စစ္တြဲ့အတြက္ ပိုမိုေကာင္းမြန္တဲ့ performance မိ်ုေပးနိုင္ပါတယ္
-
-</code>
-</pre>
+<p><strong>NOTE : strict mode တြင္မူ အထက္ပါအခ်က္အလက္မ််ားသည္ ကြဲျပားမွုရိွသည္၊</strong></p>
 
 
   </article>
