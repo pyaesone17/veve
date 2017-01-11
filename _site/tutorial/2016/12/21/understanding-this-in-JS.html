@@ -35,6 +35,14 @@
    .post-content p{
    		overflow-x: auto;
    	}
+    .post-header, .post-content {
+        padding: 50px;
+    }
+    @media screen and (max-width: 600px) {
+        .post-header, .post-content {
+            padding: 15px;
+        }
+    }
    </style> 
    <!-- jQuery Version 1.11.0 -->
   <body>
@@ -60,12 +68,12 @@
                     <div class="wrapper zawgyi">
                         <div class="post">
 
-  <header class="post-header" style="padding: 50px;padding-bottom: 0px">
+  <header class="post-header" style="padding-bottom: 0px">
     <h1 class="post-title" style="font-size: 36px">Understanding This keword in Javascript !</h1>
     <p class="post-meta">Dec 21, 2016</p>
   </header>
 
-  <article class="post-content" style="overflow-x: hidden;padding: 50px">
+  <article class="post-content" style="overflow-x: hidden">
     <p>Javascript စတင္ေလ့လာပါက အမွားအမ်ားဆံုး ျဖစ္ေလ့ျဖစ္ထရိွသည့္ အရာတစ္ခုထဲတြင္ “This” keyword သည္ တစ္ခုအပါအ၀င္ျဖစ္ပါတယ္၊ ဘာေျကာင့္အမွား မ်ားရသလဲဆိုပါက အျခားေသာ programming language အမ်ားစုတြင္ this သည္ object ကို ရည္ညြန္းက်ေလ့ရိွျပီး javascript တြင္မူ တမူထူးျခားစြာ လုပ္ေဆာင္ေသာေျကာင့္ျဖစ္သည္</p>
 
 <p><strong>Javascript တြင္ this သည္ function တစ္ခုမည္ကဲ့သို့ invoke လုပ္ျခင္းခံရလဲ ဆိုသည့္အခ်က္ေပါ မ်ားစြာမူတည္ပါတယ္၊</strong></p>

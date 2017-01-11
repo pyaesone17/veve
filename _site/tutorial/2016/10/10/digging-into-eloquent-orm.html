@@ -35,6 +35,14 @@
    .post-content p{
    		overflow-x: auto;
    	}
+    .post-header, .post-content {
+        padding: 50px;
+    }
+    @media screen and (max-width: 600px) {
+        .post-header, .post-content {
+            padding: 15px;
+        }
+    }
    </style> 
    <!-- jQuery Version 1.11.0 -->
   <body>
@@ -60,12 +68,12 @@
                     <div class="wrapper zawgyi">
                         <div class="post">
 
-  <header class="post-header" style="padding: 50px;padding-bottom: 0px">
+  <header class="post-header" style="padding-bottom: 0px">
     <h1 class="post-title" style="font-size: 36px">Digging Into Eloquent ORM !</h1>
     <p class="post-meta">Oct 10, 2016</p>
   </header>
 
-  <article class="post-content" style="overflow-x: hidden;padding: 50px">
+  <article class="post-content" style="overflow-x: hidden">
     <h2>
 	My presentation slide about digging Into Eloquent ORM for Laravel Myanmar Meetup
 </h2>

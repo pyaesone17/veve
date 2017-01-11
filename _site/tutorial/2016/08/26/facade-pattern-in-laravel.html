@@ -35,6 +35,14 @@
    .post-content p{
    		overflow-x: auto;
    	}
+    .post-header, .post-content {
+        padding: 50px;
+    }
+    @media screen and (max-width: 600px) {
+        .post-header, .post-content {
+            padding: 15px;
+        }
+    }
    </style> 
    <!-- jQuery Version 1.11.0 -->
   <body>
@@ -60,12 +68,12 @@
                     <div class="wrapper zawgyi">
                         <div class="post">
 
-  <header class="post-header" style="padding: 50px;padding-bottom: 0px">
+  <header class="post-header" style="padding-bottom: 0px">
     <h1 class="post-title" style="font-size: 36px">Exploring Facade Pattern In Laravel!</h1>
     <p class="post-meta">Aug 26, 2016</p>
   </header>
 
-  <article class="post-content" style="overflow-x: hidden;padding: 50px">
+  <article class="post-content" style="overflow-x: hidden">
     <p>( For Advance Developer Only ) </p>
 
 <p>က်ေနာ္တို့ Laravel နာမည္ေက်ာ္လာရျခင္း အေျကာင္းအရာတစ္ခုက သူ့ရဲ့ elegant ျဖစ္တဲ့ syntax လြယ္ကူတဲ့ေရးပံုေရးနည္း ေတြေျကာင့္ဆိုရင္လဲ မမွားပါဘူး၊  <br />
